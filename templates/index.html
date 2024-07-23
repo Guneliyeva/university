@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Search Results</title>
+</head>
+<body>
+    <h1>University Search Results</h1>
+    <form method="get" action="{% url 'search_universities' %}">
+        <input type="text" name="query" placeholder="Search for universities">
+        <button type="submit">Search</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>URL</th>
+                <th>Date Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for university in results %}
+            <tr>
+                <td>{{ university.name }}</td>
+                <td><a href="{{ university.url }}">{{ university.url }}</a></td>
+                <td>{{ university.date_added }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
