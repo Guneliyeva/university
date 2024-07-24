@@ -8,11 +8,12 @@ import requests
 def search_universities(request):
     query = request.GET.get('query', '')
     if query:
-        url = f"https://www.example.com/search?q={query}"
+        url = f"https://en.wikipedia.org/wiki/List_of_universities_in_Azerbaijan"
+        # url = f"https://www.example.com/search?q={query}"
+        
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        # Örnek olarak, belirli bir HTML yapıdan verileri çekme
         universities = soup.find_all('div', class_='university')
         for uni in universities:
             name = uni.find('h2').text
